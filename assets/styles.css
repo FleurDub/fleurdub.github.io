@@ -750,7 +750,7 @@ body::after {
 .card-ink .check-list li.is-done  { color: rgba(240,239,237,.45); }
 .card-ink .check-list li.is-wip   { color: var(--a1); }
 .card-ink .check-list li.is-todo  { color: rgba(240,239,237,.25); }
-.card-ink code:not(pre code) {
+.bento-card.card-ink code:not(pre code) {
   color: rgba(240,239,237,.75);
   background: rgba(240,239,237,.08);
   border-color: rgba(240,239,237,.14);
@@ -1460,7 +1460,7 @@ body::after {
 @media (max-width: 768px) {
   body { overflow: auto; height: auto; }
 
-  #layout { grid-template-columns: 1fr; }
+  #layout { grid-template-columns: 1fr; height: auto; overflow: visible; }
 
   #sidebar {
     position: fixed;

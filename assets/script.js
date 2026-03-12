@@ -990,8 +990,8 @@ function init() {
   }
 
   // ── Restore persisted preferences ──────────────────────────
-  const savedTheme = localStorage.getItem('memora-theme');
-  if (savedTheme) setTheme(savedTheme);
+  const savedTheme = localStorage.getItem('memora-theme') ?? 'dark';
+  setTheme(savedTheme);
 
   const savedFont = localStorage.getItem('memora-font-size');
   if (savedFont) setFontSize(savedFont);
