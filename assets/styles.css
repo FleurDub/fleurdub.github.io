@@ -788,7 +788,7 @@ body::after {
   flex-direction: column;
   align-items: center;
   padding: 4px 0 3px;
-  color: rgba(240,239,237,.18);
+  color: rgba(240,239,237,.42);
   font-size: 13px;
   line-height: 1;
 }
@@ -796,7 +796,7 @@ body::after {
   font-size: 8px;
   letter-spacing: .1em;
   text-transform: uppercase;
-  color: rgba(240,239,237,.14);
+  color: rgba(240,239,237,.35);
   font-style: normal;
   margin-top: 2px;
 }
