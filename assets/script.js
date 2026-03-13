@@ -59,6 +59,15 @@ const cmdOverlay     = document.getElementById('cmd-overlay');
 const cmdInput       = document.getElementById('cmd-input');
 const cmdResults     = document.getElementById('cmd-results');
 
+// Raw file overlay
+const rawOverlay     = document.getElementById('raw-overlay');
+const rawContent     = document.getElementById('raw-content');
+const rawFilename    = document.getElementById('raw-filename');
+const rawClose       = document.getElementById('raw-close');
+const rawBody        = document.getElementById('raw-body');
+/** Is the raw overlay open? */
+let rawOpen = false;
+
 // Reader
 const readerOverlay  = document.getElementById('reader-overlay');
 const readerContent  = document.getElementById('reader-content');
@@ -522,7 +531,48 @@ main.addEventListener('scroll', updateProgress, { passive: true });
 readerBody.addEventListener('scroll', updateReaderProgress, { passive: true });
 
 /* ─────────────────────────────────────────────────────────────
-   8. READING MODE (immersive overlay)
+   8. RAW FILE OVERLAY
+   ───────────────────────────────────────────────────────────── */
+
+/**
+ * Open the raw overlay and display the given .md file as plain text.
+ * @param {string} filePath - path to the .md file (e.g. "docs/my-file.md")
+ */
+async function openRaw(filePath) {
+  rawFilename.textContent = filePath.split('/').pop();
+  rawContent.textContent  = 'Chargement…';
+
+  rawOverlay.setAttribute('aria-hidden', 'false');
+  rawOverlay.classList.add('is-open');
+  rawBody.scrollTop = 0;
+  rawOpen = true;
+  rawClose.focus();
+  document.body.style.overflow = 'hidden';
+
+  try {
+    const res = await fetch(filePath, { cache: 'no-store' });
+    if (res.ok) {
+      rawContent.textContent = await res.text();
+    } else {
+      rawContent.textContent = `Erreur ${res.status} — impossible de charger le fichier.`;
+    }
+  } catch (_) {
+    rawContent.textContent = 'Impossible de charger le fichier (erreur réseau).';
+  }
+}
+
+/** Close raw overlay */
+function closeRaw() {
+  rawOverlay.setAttribute('aria-hidden', 'true');
+  rawOverlay.classList.remove('is-open');
+  rawOpen = false;
+  document.body.style.overflow = '';
+}
+
+rawClose.addEventListener('click', closeRaw);
+
+/* ─────────────────────────────────────────────────────────────
+   8b. READING MODE (immersive overlay)
    ───────────────────────────────────────────────────────────── */
 
 /**
@@ -851,6 +901,7 @@ document.addEventListener('keydown', e => {
   // Escape → close palette or reader
   if (e.key === 'Escape') {
     if (cmdOpen)    { closeCmd();    return; }
+    if (rawOpen)    { closeRaw();    return; }
     if (readerOpen) { closeReader(); return; }
   }
 
@@ -875,6 +926,17 @@ document.addEventListener('click', e => {
   const btn = e.target.closest('.btn-immersive');
   if (btn && btn.dataset.page) {
     openReader(btn.dataset.page);
+  }
+});
+
+/* ─────────────────────────────────────────────────────────────
+   14b. "RAW FILE" BUTTON HANDLER
+   Delegated on document — handles all .btn-raw clicks
+   ───────────────────────────────────────────────────────────── */
+document.addEventListener('click', e => {
+  const btn = e.target.closest('.btn-raw');
+  if (btn && btn.dataset.src) {
+    openRaw(btn.dataset.src);
   }
 });
 

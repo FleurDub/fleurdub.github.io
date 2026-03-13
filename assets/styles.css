@@ -1876,3 +1876,98 @@ pre:has(.code-lang-badge) .code-copy-btn { right: 8px; }
   .reader-ctrl-serif { display: none; }
   #reader-content h1 + p { font-size: var(--fs-prose); }
 }
+
+/* ── FICHIER BRUT ───────────────────────────────────────────────── */
+#raw-overlay {
+  position: fixed; inset: 0;
+  background: var(--bg);
+  z-index: 7100;
+  display: flex;
+  flex-direction: column;
+  transform: translateY(100%);
+  transition: transform .4s cubic-bezier(.4,0,.2,1);
+}
+#raw-overlay.is-open { transform: translateY(0); }
+
+#raw-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 28px;
+  height: 52px;
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+  background: var(--surface);
+  gap: 16px;
+}
+
+#raw-filename {
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--ink-faint);
+  letter-spacing: .04em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+#raw-close {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--ink-light);
+  background: none;
+  border: 1px solid var(--border2);
+  border-radius: var(--r-sm);
+  cursor: pointer;
+  transition: color .2s, background .2s;
+  flex-shrink: 0;
+}
+#raw-close:hover { color: var(--ink); background: var(--surface2); }
+
+#raw-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 32px max(32px, calc(50% - 480px));
+}
+
+#raw-content {
+  font-family: 'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
+  font-size: 13px;
+  line-height: 1.75;
+  color: var(--ink-mid);
+  white-space: pre-wrap;
+  word-break: break-word;
+  margin: 0;
+  background: none;
+  border: none;
+  tab-size: 2;
+}
+
+/* ── Bouton fichier brut ─────────────────────────────────────── */
+.btn-raw {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-family: 'Inter', sans-serif;
+  font-size: 10.5px;
+  font-weight: 500;
+  color: rgba(240,239,237,.65);
+  background: rgba(240,239,237,.07);
+  border: 1px solid rgba(240,239,237,.18);
+  border-radius: var(--r-sm);
+  padding: 7px 14px;
+  cursor: pointer;
+  transition: color .2s, background .2s, border-color .2s;
+  min-height: 34px;
+}
+.btn-raw:hover {
+  color: rgba(240,239,237,.9);
+  background: rgba(240,239,237,.12);
+  border-color: rgba(240,239,237,.28);
+}
