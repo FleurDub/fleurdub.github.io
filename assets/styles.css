@@ -193,6 +193,14 @@ body::after {
 #sidebar::-webkit-scrollbar { display: none; }
 
 /* Marque */
+.brand-logo {
+  display: block;
+  width: 140px;
+  margin-bottom: 12px;
+  filter: invert(1);
+  opacity: .9;
+}
+
 .sb-brand {
   padding: 26px 20px 18px;
   border-bottom: 1px solid rgba(255,255,255,.07);
