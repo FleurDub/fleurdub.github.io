@@ -1483,6 +1483,9 @@ body::after {
 
   #hamburger { display: flex; }
 
+  /* Logo : descend sous le hamburger (12px top + 40px hauteur + 12px marge) */
+  .sb-brand { padding-top: 64px; }
+
   #main-wrap { height: auto; overflow: visible; }
   #main { height: auto; overflow: visible; }
 
