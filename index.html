@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark" data-font-size="md">
+<html lang="en" data-font-size="md">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -15,10 +15,10 @@
   <meta property="og:image" content="assets/LogoMemoraSymbolTransparent.png" />
   <meta property="og:type" content="website" />
 
-  <!-- Nunito (display) · Inter (UI) · Fira Code (mono) -->
+  <!-- Spectral (display italic) · Urbanist (UI) · Fira Code (mono) -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Inter:wght@300;400;500;600&family=Fira+Code:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@1,300;1,400&family=Urbanist:wght@300;400;500&family=Fira+Code:wght@300;400;500&display=swap" rel="stylesheet" />
 
   <!-- marked.js — lightweight Markdown parser -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/9.1.6/marked.min.js"></script>
@@ -136,19 +136,6 @@
         </button>
 
         <div class="ctrl-right">
-          <!-- Theme toggle -->
-          <button id="theme-toggle" class="ctrl-icon" aria-label="Toggle theme" title="Toggle light/dark">
-            <!-- Sun icon (shown in dark mode) -->
-            <svg class="ico-sun" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <circle cx="12" cy="12" r="5"/>
-              <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
-            </svg>
-            <!-- Moon icon (shown in light mode) -->
-            <svg class="ico-moon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
-            </svg>
-          </button>
-
           <!-- Font size controls -->
           <button id="font-dec" class="ctrl-icon ctrl-txt" aria-label="Decrease font size" title="Smaller text">A−</button>
           <button id="font-reset" class="ctrl-icon ctrl-txt" aria-label="Reset font size" title="Reset">A</button>

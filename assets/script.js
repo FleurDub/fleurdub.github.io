@@ -85,7 +85,6 @@ const tocPanel       = document.getElementById('toc-panel');
 const tocList        = document.getElementById('toc-list');
 
 // Controls
-const themeToggle    = document.getElementById('theme-toggle');
 const fontDec        = document.getElementById('font-dec');
 const fontReset      = document.getElementById('font-reset');
 const fontInc        = document.getElementById('font-inc');
@@ -828,19 +827,6 @@ cmdOverlay.addEventListener('click', e => {
 
 searchTrigger.addEventListener('click', openCmd);
 
-/* ─────────────────────────────────────────────────────────────
-   10. THEME TOGGLE (light / dark)
-   ───────────────────────────────────────────────────────────── */
-
-function setTheme(theme) {
-  html.setAttribute('data-theme', theme);
-  localStorage.setItem('memora-theme', theme);
-}
-
-themeToggle.addEventListener('click', () => {
-  const current = html.getAttribute('data-theme');
-  setTheme(current === 'dark' ? 'light' : 'dark');
-});
 
 /* ─────────────────────────────────────────────────────────────
    11. FONT SIZE (sm / md / lg)
@@ -1052,8 +1038,6 @@ function init() {
   }
 
   // ── Restore persisted preferences ──────────────────────────
-  const savedTheme = localStorage.getItem('memora-theme') ?? 'dark';
-  setTheme(savedTheme);
 
   const savedFont = localStorage.getItem('memora-font-size');
   if (savedFont) setFontSize(savedFont);
