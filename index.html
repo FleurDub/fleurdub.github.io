@@ -170,6 +170,21 @@
           </button>
         </div>
 
+        <!-- PIPELINE.md — docs-as-code -->
+        <div class="tree-section">
+          <button class="tree-file root-file"
+                  data-page="pipeline"
+                  data-path=""
+                  data-search="pipeline docs-as-code sphinx git github actions ci cd diataxis autodoc myst markdown rst build deploy version">
+            <svg class="ico-md" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3">
+              <circle cx="3" cy="8" r="1.8"/><circle cx="13" cy="8" r="1.8"/>
+              <circle cx="8" cy="3" r="1.8"/><circle cx="8" cy="13" r="1.8"/>
+              <path d="M4.8 8h6.4M8 4.8v6.4"/>
+            </svg>
+            PIPELINE.md
+          </button>
+        </div>
+
         <!-- explanation/ -->
         <div class="tree-section">
           <button class="tree-folder" data-folder="explanation">
@@ -418,6 +433,158 @@
                 <p style="font-size:13px;line-height:1.75;color:var(--ink-mid);max-width:680px;">
                   The domain is fashion archiving. The documentation discipline is directly applicable to any complex software system — the same structure, toolchain, and methodology apply whether the subject is a robotics warehouse, an industrial API, or an embedded fleet.
                 </p>
+              </div>
+
+            </div>
+          </article>
+
+          <!-- ══════════════════════════════════════
+               PIPELINE.md — Docs as Code
+          ══════════════════════════════════════ -->
+          <article class="doc-page" id="page-pipeline" data-title="PIPELINE.md">
+            <div class="bento">
+
+              <!-- Hero -->
+              <div class="bento-card col-12 card-hero">
+                <div class="bc-trail">
+                  <span>MEMORA</span><span class="bc-sep">›</span>
+                  <span class="bc-cur">PIPELINE.md</span>
+                </div>
+                <h1 class="hero-h1">Documentation as <em>source code.</em></h1>
+                <p class="hero-lead">MEMORA's documentation is authored, versioned, and deployed using the same tools as its application code — Markdown and RST files in Git, processed by Sphinx, published automatically. No manual export, no separate CMS, no drift between code and docs.</p>
+                <div class="hero-cta">
+                  <button class="btn-immersive" data-page="pipeline">
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/>
+                      <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>
+                    </svg>
+                    Reading mode
+                  </button>
+                </div>
+              </div>
+
+              <!-- Stats -->
+              <div class="bento-card col-4 card-stat">
+                <span class="stat-n">4</span>
+                <span class="stat-l">Diataxis content types</span>
+              </div>
+              <div class="bento-card col-4 card-stat">
+                <span class="stat-n">3</span>
+                <span class="stat-l">Core Sphinx extensions</span>
+              </div>
+              <div class="bento-card col-4 card-stat">
+                <span class="stat-n">0</span>
+                <span class="stat-l">Manual publish steps</span>
+              </div>
+
+              <!-- Pipeline flow diagram -->
+              <div class="bento-card col-8 card-ink" id="sec-pipeline-flow">
+                <p class="card-label">End-to-end pipeline</p>
+                <div class="arch-stack">
+                  <div class="arch-node">Source files &mdash; <code style="font-size:9px;opacity:.7">.md</code> &amp; <code style="font-size:9px;opacity:.7">.rst</code></div>
+                  <div class="arch-edge">↓ <em>myst_parser · autodoc · napoleon</em></div>
+                  <div class="arch-node">Sphinx doctree (AST)</div>
+                  <div class="arch-edge">↓ <em>sphinx-build -M html</em></div>
+                  <div class="arch-node is-hl">HTML output &mdash; <code style="font-size:9px">_build/html/</code></div>
+                  <div class="arch-edge">↓ <em>git push → CI</em></div>
+                  <div class="arch-node">GitHub Pages &mdash; published</div>
+                </div>
+              </div>
+
+              <!-- Diataxis structure -->
+              <div class="bento-card col-4" id="sec-diataxis-struct">
+                <p class="card-label">Content structure — Diataxis</p>
+                <h3 class="card-title">Four distinct doc types</h3>
+                <ul class="check-list" style="margin-top:10px;">
+                  <li class="is-done"><strong>Tutorials</strong> — learning-oriented</li>
+                  <li class="is-done"><strong>How-to guides</strong> — task-oriented</li>
+                  <li class="is-done"><strong>Reference</strong> — information-oriented</li>
+                  <li class="is-done"><strong>Explanation</strong> — understanding-oriented</li>
+                </ul>
+                <p style="font-size:11px;color:var(--ink-faint);margin-top:12px;line-height:1.6;">Each type answers a fundamentally different user need. Mixing them is the most common documentation failure mode.</p>
+              </div>
+
+              <!-- Source authoring -->
+              <div class="bento-card col-6" id="sec-source">
+                <p class="card-label">01 &mdash; Source</p>
+                <h3 class="card-title">Write docs like code</h3>
+                <p style="font-size:12.5px;line-height:1.72;color:var(--ink-light);margin:10px 0 14px;">Files are plain text — reStructuredText (<code>.rst</code>) for Sphinx-native content, Markdown (<code>.md</code>) via the <code>myst_parser</code> extension for prose-heavy sections. Both formats live in the same <code>/docs</code> directory, versioned in Git alongside the Django application code.</p>
+                <p style="font-size:12px;line-height:1.6;color:var(--ink-light);margin-bottom:14px;">The file tree mirrors the Diataxis structure exactly:</p>
+                <pre style="font-family:'Fira Code',monospace;font-size:10.5px;line-height:1.8;color:var(--ink-mid);background:var(--paper-2);border:1px solid var(--border);border-radius:var(--r-sm);padding:12px 16px;overflow-x:auto;">docs/
+├── explanation/
+├── how-to/
+├── reference/
+├── tutorials/
+├── conf.py
+└── Makefile</pre>
+                <div class="pill-row">
+                  <span class="pill">.rst</span>
+                  <span class="pill">.md</span>
+                  <span class="pill">myst_parser</span>
+                  <span class="pill">plain text</span>
+                  <span class="pill">Git-tracked</span>
+                </div>
+              </div>
+
+              <!-- Sphinx build -->
+              <div class="bento-card col-6" id="sec-sphinx">
+                <p class="card-label">02 &mdash; Build</p>
+                <h3 class="card-title">Sphinx processes everything</h3>
+                <p style="font-size:12.5px;line-height:1.72;color:var(--ink-light);margin:10px 0 14px;"><code>conf.py</code> configures the build. Sphinx reads every source file, resolves cross-references, runs extensions, and emits a complete HTML site in <code>_build/html/</code>. One command: <code>make html</code>.</p>
+                <p style="font-size:11.5px;font-weight:500;color:var(--ink-faint);letter-spacing:.08em;text-transform:uppercase;margin-bottom:8px;">Active extensions</p>
+                <ul style="list-style:none;display:flex;flex-direction:column;gap:6px;">
+                  <li style="display:flex;gap:10px;align-items:baseline;">
+                    <code style="font-size:10px;color:var(--a3);min-width:120px;">autodoc</code>
+                    <span style="font-size:12px;color:var(--ink-light);">Generates API reference from Python docstrings — no duplication</span>
+                  </li>
+                  <li style="display:flex;gap:10px;align-items:baseline;">
+                    <code style="font-size:10px;color:var(--a3);min-width:120px;">napoleon</code>
+                    <span style="font-size:12px;color:var(--ink-light);">Parses Google &amp; NumPy docstring styles</span>
+                  </li>
+                  <li style="display:flex;gap:10px;align-items:baseline;">
+                    <code style="font-size:10px;color:var(--a3);min-width:120px;">myst_parser</code>
+                    <span style="font-size:12px;color:var(--ink-light);">Full Markdown support — <code>.md</code> files are first-class citizens</span>
+                  </li>
+                  <li style="display:flex;gap:10px;align-items:baseline;">
+                    <code style="font-size:10px;color:var(--a3);min-width:120px;">viewcode</code>
+                    <span style="font-size:12px;color:var(--ink-light);">Embeds links to source code next to each API symbol</span>
+                  </li>
+                  <li style="display:flex;gap:10px;align-items:baseline;">
+                    <code style="font-size:10px;color:var(--a3);min-width:120px;">autosummary</code>
+                    <span style="font-size:12px;color:var(--ink-light);">Auto-generates module index pages</span>
+                  </li>
+                </ul>
+              </div>
+
+              <!-- Three design decisions -->
+              <div class="bento-card col-4 card-decision" id="sec-dec-versioning">
+                <span class="dec-n">01</span>
+                <h4>Docs alongside code</h4>
+                <p>Documentation lives in the same repository as the Django application. Every doc change goes through the same PR process as a code change — reviewable, diffable, revertable.</p>
+                <div class="pill-row"><span class="pill">Single repo</span><span class="pill">PR-reviewable</span></div>
+              </div>
+              <div class="bento-card col-4 card-decision">
+                <span class="dec-n">02</span>
+                <h4>Autodoc — no duplication</h4>
+                <p><code>sphinx.ext.autodoc</code> extracts documentation directly from Python docstrings. The source of truth is the code itself — the reference pages are generated, not written by hand.</p>
+                <div class="pill-row"><span class="pill">Single source of truth</span><span class="pill">Always in sync</span></div>
+              </div>
+              <div class="bento-card col-4 card-decision">
+                <span class="dec-n">03</span>
+                <h4>Zero-touch deployment</h4>
+                <p>A push to the main branch triggers the build and publishes to GitHub Pages automatically. No manual export step, no FTP, no CMS login. Publishing is a consequence of merging.</p>
+                <div class="pill-row"><span class="pill">GitHub Actions</span><span class="pill">GitHub Pages</span></div>
+              </div>
+
+              <!-- Transferability callout -->
+              <div class="bento-card col-12 callout note" id="sec-pipeline-transfer">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="callout-ico">
+                  <polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/>
+                </svg>
+                <div>
+                  <p class="callout-title">Domain-agnostic toolchain</p>
+                  <p>The entire pipeline — Sphinx, autodoc, Diataxis structure, Git-based review, automated deployment — is completely independent of the subject matter. The same setup applies identically to a robotics warehouse system, an embedded fleet, or an industrial logistics API. Only the content changes.</p>
+                </div>
               </div>
 
             </div>
