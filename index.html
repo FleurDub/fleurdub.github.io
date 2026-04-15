@@ -146,9 +146,22 @@
       <!-- ── TREE NAV (mirrors exact folder architecture) ── -->
       <nav id="tree-nav" aria-label="Documentation tree">
 
+        <!-- Overview — landing page -->
+        <div class="tree-section">
+          <button class="tree-file root-file"
+                  data-page="home"
+                  data-path=""
+                  data-search="home overview landing context memora engineering documentation pipeline">
+            <svg class="ico-md" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3">
+              <path d="M2 8l6-5 6 5v7h-4v-4H6v4H2z"/>
+            </svg>
+            Overview
+          </button>
+        </div>
+
         <!-- ARCHITECTURE.md — root file -->
         <div class="tree-section">
-          <button class="tree-file root-file is-active"
+          <button class="tree-file root-file"
                   data-page="architecture"
                   data-path="ARCHITECTURE.md"
                   data-search="architecture overview system context domain">
@@ -336,10 +349,84 @@
         <div id="page-container">
 
           <!-- ══════════════════════════════════════
-               ARCHITECTURE.md — rich bento page
-               (default / homepage of docs)
+               HOME — Landing / Overview page
           ══════════════════════════════════════ -->
-          <article class="doc-page is-active" id="page-architecture"
+          <article class="doc-page" id="page-home"
+                   data-title="Overview">
+
+            <div class="bento">
+
+              <!-- Hero card -->
+              <div class="bento-card col-12 card-hero">
+                <div class="bc-trail">
+                  <span>MEMORA</span><span class="bc-sep">›</span>
+                  <span class="bc-cur">Overview</span>
+                </div>
+                <h1 class="hero-h1">Documentation as an engineering <em>discipline.</em></h1>
+                <p class="hero-lead">This site is the documentation system for MEMORA, a personal engineering project — a relational archive built with Python, Django, and Next.js. It demonstrates a complete docs-as-code pipeline: Diataxis-structured content, version-controlled under Git, built with Sphinx, deployed automatically.</p>
+                <div class="hero-cta">
+                  <button class="btn-immersive" data-page="architecture">
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/>
+                      <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>
+                    </svg>
+                    Enter documentation
+                  </button>
+                </div>
+              </div>
+
+              <!-- Stack -->
+              <div class="bento-card col-4">
+                <p class="card-label">Stack</p>
+                <p class="card-title">Backend · API · Frontend</p>
+                <div class="pill-row">
+                  <span class="pill">Python</span>
+                  <span class="pill">Django</span>
+                  <span class="pill">Django REST</span>
+                  <span class="pill">Next.js</span>
+                  <span class="pill">PostgreSQL</span>
+                </div>
+              </div>
+
+              <!-- Method -->
+              <div class="bento-card col-4">
+                <p class="card-label">Documentation method</p>
+                <p class="card-title">Diataxis framework</p>
+                <div class="pill-row">
+                  <span class="pill">Tutorials</span>
+                  <span class="pill">How-to guides</span>
+                  <span class="pill">Reference</span>
+                  <span class="pill">Explanation</span>
+                </div>
+              </div>
+
+              <!-- Pipeline -->
+              <div class="bento-card col-4">
+                <p class="card-label">Docs-as-code pipeline</p>
+                <p class="card-title">Build · Version · Deploy</p>
+                <div class="pill-row">
+                  <span class="pill">Sphinx</span>
+                  <span class="pill">Git</span>
+                  <span class="pill">GitHub Pages</span>
+                  <span class="pill">CI/CD</span>
+                </div>
+              </div>
+
+              <!-- Transferability note -->
+              <div class="bento-card col-12">
+                <p class="card-label">Context</p>
+                <p style="font-size:13px;line-height:1.75;color:var(--ink-mid);max-width:680px;">
+                  The domain is fashion archiving. The documentation discipline is directly applicable to any complex software system — the same structure, toolchain, and methodology apply whether the subject is a robotics warehouse, an industrial API, or an embedded fleet.
+                </p>
+              </div>
+
+            </div>
+          </article>
+
+          <!-- ══════════════════════════════════════
+               ARCHITECTURE.md — rich bento page
+          ══════════════════════════════════════ -->
+          <article class="doc-page" id="page-architecture"
                    data-title="ARCHITECTURE.md"
                    data-md-content="# ARCHITECTURE\n\nMEMORA is a relational knowledge system for fashion archives.">
 

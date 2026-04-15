@@ -1062,8 +1062,8 @@ function init() {
     navigateTo(hash, false);
   } else {
     // Default page
-    navigateTo('architecture', false);
-    history.replaceState({ page: 'architecture' }, '', '#architecture');
+    navigateTo('home', false);
+    history.replaceState({ page: 'home' }, '', '#home');
   }
 }
 
