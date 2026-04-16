@@ -593,6 +593,108 @@
                 <div class="pill-row"><span class="pill">GitHub Actions</span><span class="pill">GitHub Pages</span></div>
               </div>
 
+              <!-- ── HOW TO CONTRIBUTE ─────────────────────────── -->
+
+              <!-- Content routing -->
+              <div class="bento-card col-6" id="sec-contribute-routing">
+                <p class="card-label">How to contribute &mdash; Content routing</p>
+                <h3 class="card-title">The right type in the right place</h3>
+                <p style="font-size:12px;line-height:1.6;color:var(--ink-light);margin:10px 0 14px;">Each Diataxis type maps to a dedicated directory. The question to ask is not <em>what do I want to write?</em> but <em>what does the user need to do?</em></p>
+                <ul style="list-style:none;display:flex;flex-direction:column;gap:7px;">
+                  <li style="display:flex;gap:12px;align-items:baseline;">
+                    <code style="font-size:10px;color:var(--a3);min-width:110px;flex-shrink:0;">tutorials/</code>
+                    <span style="font-size:12px;color:var(--ink-light);">Learning-oriented. User is a beginner following a guided path. Write step-by-step — no options, no detours.</span>
+                  </li>
+                  <li style="display:flex;gap:12px;align-items:baseline;">
+                    <code style="font-size:10px;color:var(--a3);min-width:110px;flex-shrink:0;">how-to/</code>
+                    <span style="font-size:12px;color:var(--ink-light);">Task-oriented. User knows what they want. Assume competence, explain the steps, nothing more.</span>
+                  </li>
+                  <li style="display:flex;gap:12px;align-items:baseline;">
+                    <code style="font-size:10px;color:var(--a3);min-width:110px;flex-shrink:0;">reference/</code>
+                    <span style="font-size:12px;color:var(--ink-light);">Information-oriented. User is consulting, not reading. Structure for scanning: fields, types, defaults.</span>
+                  </li>
+                  <li style="display:flex;gap:12px;align-items:baseline;">
+                    <code style="font-size:10px;color:var(--a3);min-width:110px;flex-shrink:0;">explanation/</code>
+                    <span style="font-size:12px;color:var(--ink-light);">Understanding-oriented. User wants context, rationale, trade-offs. The only place opinions belong.</span>
+                  </li>
+                </ul>
+              </div>
+
+              <!-- Naming conventions -->
+              <div class="bento-card col-6" id="sec-contribute-naming">
+                <p class="card-label">Naming conventions</p>
+                <h3 class="card-title">Consistent, predictable filenames</h3>
+                <p style="font-size:12px;line-height:1.6;color:var(--ink-light);margin:10px 0 14px;">Filenames are part of the documentation contract. A consistent scheme makes every path guessable without opening the sidebar.</p>
+                <ul style="list-style:none;display:flex;flex-direction:column;gap:10px;">
+                  <li>
+                    <p style="font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:3px;">Format</p>
+                    <p style="font-size:12px;color:var(--ink-light);">Always <code>kebab-case.md</code> — no spaces, no underscores, no uppercase. Example: <code>add-data.md</code>, not <code>AddData.md</code>.</p>
+                  </li>
+                  <li>
+                    <p style="font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:3px;">How-to guides</p>
+                    <p style="font-size:12px;color:var(--ink-light);">Verb + object: <code>run-the-project.md</code>, <code>add-data.md</code>. Starts with an action — mirrors what the user is about to do.</p>
+                  </li>
+                  <li>
+                    <p style="font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:3px;">Reference</p>
+                    <p style="font-size:12px;color:var(--ink-light);">Noun: <code>data-model.md</code>, <code>api.md</code>, <code>permissions.md</code>. The thing being described, not the action.</p>
+                  </li>
+                  <li>
+                    <p style="font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:3px;">Explanation</p>
+                    <p style="font-size:12px;color:var(--ink-light);">Concept noun: <code>api-design.md</code>, <code>domain-model.md</code>. Describes a subject, not a task.</p>
+                  </li>
+                </ul>
+              </div>
+
+              <!-- ── VERSIONING LOGIC ──────────────────────────── -->
+
+              <!-- Branch flow diagram -->
+              <div class="bento-card col-5 card-ink" id="sec-version-flow">
+                <p class="card-label">Versioning logic &mdash; branch model</p>
+                <div class="arch-stack" style="margin-top:8px;">
+                  <div class="arch-node"><code style="font-size:9px;opacity:.7;">docs/feature-name</code> &nbsp;·&nbsp; <code style="font-size:9px;opacity:.7;">fix/issue-name</code></div>
+                  <div class="arch-edge">↓ <em>pull request · review · merge</em></div>
+                  <div class="arch-node is-hl"><code style="font-size:9px;">main</code> &mdash; stable, auto-deploys</div>
+                  <div class="arch-edge">↓ <em>release tag on merge</em></div>
+                  <div class="arch-node"><code style="font-size:9px;opacity:.7;">v0.1</code> &nbsp;·&nbsp; <code style="font-size:9px;opacity:.7;">v0.2</code> &nbsp;·&nbsp; <code style="font-size:9px;opacity:.7;">v1.0</code></div>
+                  <div class="arch-edge">↓ <em>if fix needed on past version</em></div>
+                  <div class="arch-node"><code style="font-size:9px;opacity:.7;">backport/v0.1-fix-name</code></div>
+                </div>
+              </div>
+
+              <!-- Branches detail -->
+              <div class="bento-card col-3" id="sec-version-branches">
+                <p class="card-label">Branches</p>
+                <ul style="list-style:none;display:flex;flex-direction:column;gap:10px;margin-top:8px;">
+                  <li>
+                    <code style="font-size:10px;color:var(--a3);">main</code>
+                    <p style="font-size:11.5px;color:var(--ink-light);margin-top:3px;line-height:1.55;">Protected. Auto-deploys on push. Only receives merges from reviewed PRs — never direct commits.</p>
+                  </li>
+                  <li>
+                    <code style="font-size:10px;color:var(--a3);">docs/feature-name</code>
+                    <p style="font-size:11.5px;color:var(--ink-light);margin-top:3px;line-height:1.55;">For new sections or significant additions. Scoped to one topic. Merged and deleted after review.</p>
+                  </li>
+                  <li>
+                    <code style="font-size:10px;color:var(--a3);">fix/issue-name</code>
+                    <p style="font-size:11.5px;color:var(--ink-light);margin-top:3px;line-height:1.55;">For corrections — typos, outdated info, broken links. Short-lived, merged directly.</p>
+                  </li>
+                </ul>
+              </div>
+
+              <!-- Tags & backport -->
+              <div class="bento-card col-4" id="sec-version-tags">
+                <p class="card-label">Tags &amp; backport</p>
+                <ul style="list-style:none;display:flex;flex-direction:column;gap:12px;margin-top:8px;">
+                  <li>
+                    <p style="font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:4px;">Semantic tags</p>
+                    <p style="font-size:11.5px;color:var(--ink-light);line-height:1.55;">Doc versions align with app releases: <code>v0.1</code>, <code>v0.2</code>, <code>v1.0</code>. A tag is created on <code>main</code> at each release and pushed to the changelog. The tag is immutable — it marks a known-good state.</p>
+                  </li>
+                  <li>
+                    <p style="font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:4px;">Backporting</p>
+                    <p style="font-size:11.5px;color:var(--ink-light);line-height:1.55;">If an error is discovered in a past version after a new release, a <code>backport/v0.1-fix-name</code> branch is created from the original tag, the fix is cherry-picked, and the tag is updated. The changelog records the correction.</p>
+                  </li>
+                </ul>
+              </div>
+
               <!-- Transferability callout -->
               <div class="bento-card col-12 callout note" id="sec-pipeline-transfer">
                 <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="callout-ico">
